@@ -5,6 +5,8 @@ import com.mrraxa01.agenda.model.Pessoa;
 import com.mrraxa01.agenda.util.DateUtil;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -66,6 +68,40 @@ public class PessoaController {
 			main.getDados().add(temp);
 		}
 	
+	}
+	
+	@FXML
+	private void handleExcluiPessoa() {
+		int selecionado = tabela.getSelectionModel().getSelectedIndex();
+		if(selecionado >= 0) {
+			tabela.getItems().remove(selecionado);
+		}else {
+			emiteAlerta("Erro ao excluir", "Nenhum item selecionado!", "Por favor, selecione um item para excluir!");
+		}
+	}
+
+
+	
+	@FXML
+	private void handleEditarPessoa() {
+		Pessoa selecionada = tabela.getSelectionModel().getSelectedItem();
+		if(selecionada != null) {
+			boolean onClicked = main.mostrarContatoDialog(selecionada);
+			if(onClicked) this.mostraDetalhe(selecionada);
+					
+		}else {
+			
+			emiteAlerta("Erro ao editar", "Nenhum item selecionado!", "Por favor, selecione um item para editar!");
+		}
+		
+	}
+	
+	private void emiteAlerta(String title, String header, String content) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+		alert.showAndWait();
 	}
 }
 
