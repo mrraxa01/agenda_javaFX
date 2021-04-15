@@ -81,7 +81,7 @@
                   </GridPane>
                   <HBox layoutX="20.899999618530273" layoutY="227.89999389648438" spacing="16.0" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="32.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Novo" />
+                        <Button mnemonicParsing="false" onAction="#handleNovaPessoa" text="Novo" />
                         <Button mnemonicParsing="false" text="Editar" />
                         <Button mnemonicParsing="false" text="Excluir" />
                      </children>

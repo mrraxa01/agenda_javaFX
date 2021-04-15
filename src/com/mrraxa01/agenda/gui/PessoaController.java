@@ -27,7 +27,6 @@ public class PessoaController {
 	
 	private Main main;
 	
-	//obrigatório declarar o construtor vazio
 	public PessoaController() {}
 	
 	@FXML
@@ -47,17 +46,27 @@ public class PessoaController {
 	}
 
 	private void mostraDetalhe(Pessoa pessoa) {
-		if(pessoa!= null){
+		if(pessoa != null) {
 			rotuloNome.setText(pessoa.getNome());
 			rotuloSobrenome.setText(pessoa.getSobrenome());
 			rotuloDataNascimento.setText(DateUtil.format(pessoa.getDataNascimento()));
-			
-		}else {
+		} else {
 			rotuloNome.setText("");
 			rotuloSobrenome.setText("");
 			rotuloDataNascimento.setText("");
-			
 		}
 		
 	}
+	
+	@FXML
+	private void handleNovaPessoa() {
+		Pessoa temp = new Pessoa();
+		boolean okClicked = main.mostrarContatoDialog(temp);
+		if(okClicked) {
+			main.getDados().add(temp);
+		}
+	
+	}
 }
+
+

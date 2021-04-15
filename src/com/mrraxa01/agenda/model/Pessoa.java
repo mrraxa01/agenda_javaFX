@@ -13,7 +13,9 @@ public class Pessoa {
 	private StringProperty sobrenome;
 	private ObjectProperty<LocalDate> dataNascimento;
 	
-	public Pessoa() {}
+	public Pessoa() {
+		this(null, null, null);
+	}
 
 	public Pessoa(String nome, String sobrenome, LocalDate dataNascimento) {
 		this.nome = new SimpleStringProperty(nome);
@@ -36,7 +38,7 @@ public class Pessoa {
 		return this.sobrenome.get();
 	}
 	
-	public void SetSobrenome(String sobrenome) {
+	public void setSobrenome(String sobrenome) {
 		this.sobrenome.set(sobrenome);
 	}
 	
